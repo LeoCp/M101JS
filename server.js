@@ -1,8 +1,13 @@
 var express = require('express')
-,app = express();
+,app = express()
+,engines = require('consolidate');
+
+app.engine('html',engines.nunjucks);
+app.set('view engine','html');
+app.set('views',__dirname + '/views');
 
 app.get('/', function (req,res) {
-  res.send("Home page");
+  res.render('login',{'name':'Login'});
 });
 
 // NOT FOUD
